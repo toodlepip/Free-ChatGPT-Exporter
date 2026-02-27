@@ -23,13 +23,13 @@ function progress(pct, text) {
 
 function formatEta(ms) {
   const totalSecs = Math.round(ms / 1000);
-  if (totalSecs < 60) return `~${totalSecs}s left`;
+  if (totalSecs < 60) return `${totalSecs}s left`;
   const mins = Math.floor(totalSecs / 60);
   const secs = totalSecs % 60;
-  if (mins < 60) return secs > 0 ? `~${mins}m ${secs}s left` : `~${mins}m left`;
+  if (mins < 60) return secs > 0 ? `${mins}m ${secs}s left` : `${mins}m left`;
   const hrs = Math.floor(mins / 60);
   const remMins = mins % 60;
-  return remMins > 0 ? `~${hrs}h ${remMins}m left` : `~${hrs}h left`;
+  return remMins > 0 ? `${hrs}h ${remMins}m left` : `${hrs}h left`;
 }
 
 // ─── Auth token ───────────────────────────────────────────────────────────────
