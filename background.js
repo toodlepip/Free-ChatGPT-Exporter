@@ -354,7 +354,9 @@ async function doExport() {
     binary += String.fromCharCode(...bytes.subarray(i, i + CHUNK));
   }
   const dataUrl = 'data:application/json;base64,' + btoa(binary);
-  const filename = `chatgpt-export-${new Date().toISOString().slice(0, 10)}.json`;
+  const now = new Date();
+  const timestamp = now.toISOString().slice(0, 16).replace('T', '-').replace(':', '-');
+  const filename = `chatgpt-export-${timestamp}.json`;
 
   await chrome.downloads.download({ url: dataUrl, filename, saveAs: false });
 
