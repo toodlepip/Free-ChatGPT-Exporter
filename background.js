@@ -341,12 +341,22 @@ async function doExport() {
 
   progress(97, 'Saving file…');
 
-  // Read the completed OPFS file and hand it to the Downloads API
+  // Read the completed OPFS file.
+  // URL.createObjectURL is not available in MV3 service workers, so we encode
+  // the content as a base64 data URL instead. Processed in chunks of 8 KB to
+  // avoid a call stack overflow when spreading large byte arrays.
   const file = await fileHandle.getFile();
-  const blobUrl = URL.createObjectURL(file);
+  const text = await file.text();
+  const bytes = new TextEncoder().encode(text);
+  let binary = '';
+  const CHUNK = 8192;
+  for (let i = 0; i < bytes.length; i += CHUNK) {
+    binary += String.fromCharCode(...bytes.subarray(i, i + CHUNK));
+  }
+  const dataUrl = 'data:application/json;base64,' + btoa(binary);
   const filename = `chatgpt-export-${new Date().toISOString().slice(0, 10)}.json`;
 
-  await chrome.downloads.download({ url: blobUrl, filename, saveAs: false });
+  await chrome.downloads.download({ url: dataUrl, filename, saveAs: false });
 
   await cleanup();
 
