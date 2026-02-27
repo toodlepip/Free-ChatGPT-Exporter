@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ChatGPT Exporter</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+      width: 300px;
+      padding: 16px;
+      margin: 0;
+      background: #fff;
+      color: #1a1a1a;
+    }
+
+    h1 {
+      font-size: 15px;
+      font-weight: 600;
+      margin: 0 0 4px;
+    }
+
+    p.subtitle {
+      font-size: 12px;
+      color: #666;
+      margin: 0 0 14px;
+    }
+
+    #export-btn {
+      width: 100%;
+      padding: 9px 0;
+      background: #10a37f;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background 0.15s;
+    }
+
+    #export-btn:hover:not(:disabled) {
+      background: #0d8f6f;
+    }
+
+    #export-btn:disabled {
+      background: #9e9e9e;
+      cursor: not-allowed;
+    }
+
+    #cancel-btn {
+      display: none;
+      width: 100%;
+      margin-top: 8px;
+      padding: 7px 0;
+      background: transparent;
+      color: #666;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 13px;
+      cursor: pointer;
+      transition: border-color 0.15s, color 0.15s;
+    }
+
+    #cancel-btn:hover:not(:disabled) {
+      border-color: #999;
+      color: #333;
+    }
+
+    #cancel-btn:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
+    #progress-wrap {
+      margin-top: 14px;
+      display: none;
+    }
+
+    #progress-bar-bg {
+      height: 6px;
+      background: #e5e5e5;
+      border-radius: 3px;
+      overflow: hidden;
+    }
+
+    #progress-bar {
+      height: 100%;
+      width: 0%;
+      background: #10a37f;
+      border-radius: 3px;
+      transition: width 0.25s ease;
+    }
+
+    #status {
+      margin-top: 8px;
+      font-size: 12px;
+      color: #555;
+      min-height: 18px;
+      line-height: 1.4;
+    }
+
+    #status.error {
+      color: #c0392b;
+    }
+
+    #status.success {
+      color: #10a37f;
+      font-weight: 500;
+    }
+
+    #status.cancelled {
+      color: #888;
+    }
+  </style>
+</head>
+<body>
+  <h1>ChatGPT Exporter</h1>
+  <p class="subtitle">Downloads all conversations to a JSON file.</p>
+  <button id="export-btn">Export All Conversations</button>
+  <button id="cancel-btn">Cancel</button>
+  <div id="progress-wrap">
+    <div id="progress-bar-bg">
+      <div id="progress-bar"></div>
+    </div>
+    <div id="status"></div>
+  </div>
+  <script src="popup.js"></script>
+</body>
+</html>
