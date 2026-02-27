@@ -13,5 +13,8 @@
 *.swp
 *.swo
 
+# Obsidian
+.obsidian/
+
 # Claude Code
 .claude/
