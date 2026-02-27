@@ -1,8 +1,14 @@
 # ChatGPT Conversation Exporter
 
-A free, open-source Chrome extension that bulk-exports all of your ChatGPT conversations to a single JSON file — entirely within your browser, with no server involved.
+It's super-frustrating but if you end up using a Team / Pro / Enterprise / whatever they call it version of **ChatGPT**, there's no option to export your chats. You can share, yes, but no export and definitely no bulk export.
 
-Particularly useful for **ChatGPT Team plan** users, where OpenAI does not provide a built-in export option (unlike the individual plan).
+C'mon OpenAI.
+
+This isn't helpful when your admin decides you're shifting from ChatGPT to Claude or "insert LLM of choice here"
+
+So, here's a free, open-source Chrome extension that bulk-exports all of your ChatGPT conversations to a single JSON file (saved in your Downloads folder), entirely within your browser, with no server involved.
+
+[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/B0B41V12A1)
 
 ---
 
